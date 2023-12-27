@@ -1,6 +1,7 @@
 from github import Github
 from github import Auth
 from keys import gh_token
+import traceback
 import os
 import subprocess
 
@@ -14,18 +15,27 @@ for repo in g.get_user().get_repos():
     if len(commands) < 5:
         commands.append(repo.name)
 
+os.chdir("../gh_repos/")
+
 for command in commands:
     try:
-        subprocess.run(
-            [
-                "git",
-                "clone",
-                f"git@github.com:marc-marcos/{command}.git",
-                f"../gh_repos/{command}",
-            ]
-        )
+        # Antes de hacer esto comprobar si ya existe el directorio
+        if os.path.exists(f"{command}"):
+            subprocess.run(["git", "pull"])
+
+            print(f"{command} already exists.")
+
+        else:
+            subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    f"git@github.com:marc-marcos/{command}.git",
+                    f"{command}",
+                ]
+            )
 
     except Exception:
-        print("Some error")
+        print(traceback.format_exc())
 
 g.close()
