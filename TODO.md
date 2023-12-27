@@ -1,3 +1,14 @@
-Ya se descargan los repositorios de Github, sería conveniente que si ya existe un folder con el nombre del repositorio haga pull de ese repositorio y así no se descargue cada vez. 
+# TODO
 
-Lo proximo es hacer lo mismo con el gitlab.
+## TODO
+
+- Being able to scan Gitlab.
+- Creating a frontend to be able to manage the repos.
+- Scan certain Drive folders and download them.
+- Scan ICloud.
+- Use the Bitwarden API to download all the passwords.
+- Use an external hard drive to store everything.
+
+## BUGS
+
+- [ ] When there is a repo that isn't mine it throws an error.
