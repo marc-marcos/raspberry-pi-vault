@@ -15,7 +15,12 @@ for repo in g.get_user().get_repos():
     if len(commands) < 5:
         commands.append(repo.name)
 
-os.chdir("../gh_repos/")
+try:
+    os.chdir("../gh_repos/")
+
+except FileNotFoundError:
+    os.mkdir("../gh_repos/")
+    os.chdir("../gh_repos/")
 
 for command in commands:
     try:
