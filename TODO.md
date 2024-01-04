@@ -1,8 +1,11 @@
 # TODO
 
-## TODO
+## DOING
 
 - Being able to scan Gitlab.
+  - Being able to scan **private** projects in Gitlab.
+## TODO
+
 - Creating a frontend to be able to manage the repos.
 - Scan certain Drive folders and download them.
 - Scan ICloud.
