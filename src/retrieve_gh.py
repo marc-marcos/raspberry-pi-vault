@@ -1,9 +1,9 @@
-from github import Github
 from github import Auth
+from github import Github
 from keys import gh_token
-import traceback
 import os
 import subprocess
+import traceback
 
 auth = Auth.Token(gh_token)
 
