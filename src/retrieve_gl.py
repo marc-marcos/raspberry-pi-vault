@@ -1,34 +1,46 @@
-import requests
+from keys import gl_token
+import gitlab
 import os
 import subprocess
 
-r = requests.get("https://gitlab.com/api/v4/users/10677309/projects")
-# print(r.json()[0]["http_url_to_repo"])
-repos_json = r.json()
+gl = gitlab.Gitlab(private_token=gl_token)
+gl.auth()
+
+projects = gl.projects.list(owned=True)
+
+my_file = open("output.json", "w")
 
 commands = []
 
-for repo in repos_json:
-    commands.append([repo["name"], repo["http_url_to_repo"]])
+for i in projects:
+    commands.append(i.asdict()["ssh_url_to_repo"])
+
+my_file.close()
 
 try:
     os.chdir("../gl_repos/")
 
 except FileNotFoundError:
-    os.mkdir("../gl_repos")
+    os.mkdir("../gl_repos/")
     os.chdir("../gl_repos/")
 
 for command in commands:
     try:
-        if os.path.exists(f"{command[0]}"):
-            os.chdir(f"{command[0]}")
+        # Antes de hacer esto comprobar si ya existe el directorio
+        if os.path.exists(f"{command.split('/')[-1]}"):
             subprocess.run(["git", "pull"])
-            os.chdir("..")
+
+            print(f"{command} already exists.")
 
         else:
-            subprocess.run(["git", "clone", command[1], command[0]])
+            subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    command,
+                    f"{command.split('/')[-1]}",
+                ]
+            )
 
     except Exception:
-        print("There has been some error.")
-
-r.close()
+        pass
