@@ -2,8 +2,6 @@
 
 ## DOING
 
-- Being able to scan Gitlab.
-  - Being able to scan **private** projects in Gitlab.
 ## TODO
 
 - Creating a frontend to be able to manage the repos.
@@ -15,3 +13,4 @@
 
 - [ ] When there is a repo that isn't mine it throws an error.
 - [ ] When a Bitwarden password doesn't have a username it fails, it shouldn't.
+- [ ] Both Github and Gitlab behave unpredictably when pulling from a repo.
