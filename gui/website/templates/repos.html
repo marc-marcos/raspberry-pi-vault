@@ -1,0 +1,15 @@
+<h1>This should be the repos page</h1>
+
+<h2>Github repos: </h2>
+<ul class="ul" id="ul">
+  {% for obj in repos_gh %}
+  <li>{{ obj }}</li> 
+  {% endfor %}
+</ul>
+
+<h2>Gitlab repos:</h2>
+<ul class="ul" id="ul">
+  {% for obj in repos_gl %}
+  <li>{{ obj }}</li> 
+  {% endfor %}
+</ul>

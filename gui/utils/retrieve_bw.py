@@ -1,7 +1,5 @@
-from keys import bw_key
+from utils.keys import bw_key
 import requests
-
-url = "http://localhost:8080"
 
 
 def unlock_vault(password: str):
@@ -33,11 +31,13 @@ def lock_vault():
     requests.post(url + "/lock")
 
 
-unlock_vault(bw_key)
-a = save_all_passwords(bw_key)
-lock_vault()
+if __name__ == "__main__":
+    url = "http://localhost:8080"
+    unlock_vault(bw_key)
+    a = save_all_passwords(bw_key)
+    lock_vault()
 
-print(a)
+    print(a)
 
-with open("../apples.txt", "w") as f:
-    f.write(a)
+    with open("../apples.txt", "w") as f:
+        f.write(a)

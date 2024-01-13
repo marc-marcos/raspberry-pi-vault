@@ -1,3 +1,5 @@
 keys.py
 __pycache__/
+gh_repos/
+gl_repos/
 *.txt
